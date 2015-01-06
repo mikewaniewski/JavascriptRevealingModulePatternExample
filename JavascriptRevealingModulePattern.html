@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+ 
+</head>
+<body>
+
+	Calculator:
+    <br />
+    1st component: <input type="number" id="component1" value="3" /><br />
+
+    2nd component: <input type="number" id="component2" value="2" /><br />
+
+    <button id="btnAdd">Add!</button>
+
+    <div id="myDiv"></div>
+
+
+	 <script>
+
+	    $(function () {
+            $('#btnAdd').click(function () {
+             
+            calculator.exposedAdd($('#component1').val(), $('#component2').val());
+           
+         });
+
+        });
+
+
+        //calculator.js
+        var calculator = function (resultDiv) {
+            //private members
+            var dest = document.getElementById(resultDiv),
+                add = function (x, y) {
+                    dest.innerHTML = ( parseInt(x) + parseInt(y) );
+                };
+ 
+            //public members
+            return {
+                exposedAdd: add 
+            };
+        } ("myDiv");
+    </script>
+</body>
+</html>
